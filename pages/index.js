@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
+import Main from "../components/Main";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         />
       </Head>
       <Navbar />
+      <Main />
     </>
   );
 }

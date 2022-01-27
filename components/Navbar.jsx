@@ -43,11 +43,11 @@ function Navbar() {
             </Link>
           </div>
         </div>
-        <div className='right flex items-center gap-8'>
+        <div className='right flex items-center gap-4 lg:gap-8'>
           <div>
             <img src='/images/icon-cart.svg' alt='' />
           </div>
-          <div className='h-10 w-10 bg-blue-100 rounded-full'>
+          <div className='h-8 w-8 lg:h-10 lg:w-10 bg-blue-100 rounded-full'>
             <img
               className='h-full w-full'
               src='/images/image-avatar.png'
