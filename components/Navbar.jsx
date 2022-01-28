@@ -8,7 +8,7 @@ function Navbar() {
   }
   return (
     <>
-      <nav className=' flex justify-between px-8 md:px-24 items-center py-8 relative'>
+      <nav className=' flex justify-between px-8 md:px-24 items-center py-6 relative'>
         <div className='left flex items-center gap-8'>
           <div className='flex items-center gap-4'>
             <button className='md:hidden' onClick={toggle}>
