@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
+import React, { useRef } from "react";
+import { Slide } from "react-slideshow-image";
+//
 import SimpleImageSlider from "react-simple-image-slider";
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -18,6 +22,11 @@ const desktopImages = [
 ];
 
 function Main() {
+  const slideRef = useRef();
+  const goto = ({ target }) => {
+    slideRef.current.goTo(parseInt(target.value, 10));
+  };
+
   return (
     <>
       <div className='lg:m-24   grid grid-cols-1 lg:grid-cols-2 '>
@@ -32,26 +41,32 @@ function Main() {
               navStyle={1}
             />
           </div>
-          {/* <div className='hidden lg:block w-[24rem] overflow-hidden rounded-xl '>
+          <div
+            className='hidden lg:block w-[24rem] overflow-hidden rounded-xl '
+            ref={slideRef}
+          >
             <img
               className='h-full w-full'
               src='/images/image-product-1.jpg'
               alt=''
             />
-          </div> */}
+          </div>
           <div
             className='hidden lg:flex
             ImgSlider gap-4 justify-center  w-[24rem]'
           >
-            <Carousel>
-              {desktopImages.map(images => (
-                <div key={images.url}>
-                  <div className='h-22 w-22 overflow-hidden rounded-xl ring-2 ring-orange opacity-50  '>
-                    <img className='h-full w-full' src={images.url} alt='' />
-                  </div>
-                </div>
-              ))}
-            </Carousel>
+            {/* <Carousel> */}
+            {desktopImages.map(images => (
+              <div key={images.url}>
+                <button
+                  className='h-22 w-22 overflow-hidden rounded-xl active:ring-2 active:ring-orange active:opacity-50'
+                  // onClick={}
+                >
+                  <img className='h-full w-full' src={images.url} alt='' />
+                </button>
+              </div>
+            ))}
+            {/* </Carousel> */}
           </div>
         </div>
         <div className='right p-6 flex gap-4 flex-col mb-16 lg:w-[27rem]'>
