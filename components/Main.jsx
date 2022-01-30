@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-key */
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
 import React, { useRef } from "react";
 import { Slide } from "react-slideshow-image";
 //
@@ -21,7 +23,7 @@ const desktopImages = [
   { url: "/images/image-product-4-thumbnail.jpg" },
 ];
 
-function Main() {
+function Main({ addCount, minusCount, count, Cart, price }) {
   const slideRef = useRef();
   const goto = ({ target }) => {
     slideRef.current.goTo(parseInt(target.value, 10));
@@ -81,7 +83,7 @@ function Main() {
           </div>
           <div className='flex items-center justify-between lg:flex-col lg:items-start'>
             <div className='flex items-center gap-4'>
-              <div className='text-3xl font-semibold '>$125.00</div>
+              <div className='text-3xl font-semibold '>${price.toFixed(2)}</div>
               <span className=' font-semibold text-orange bg-pale-orange py-1 px-3 rounded-xl'>
                 50%
               </span>
@@ -92,14 +94,27 @@ function Main() {
           </div>
           <div className='flex flex-col gap-4 lg:gap-0 lg:flex-row lg:gap    '>
             <div className='font-semibold  flex justify-between space bg-light-grayish-blue rounded-xl py-2 px-4 items-center lg:w-32  '>
-              <button className='text-orange font-semibold text-3xl'>-</button>
-              <div>0</div>
-              <button className='text-orange font-semibold text-3xl'>+</button>
+              <button
+                className='text-orange font-semibold text-3xl'
+                onClick={minusCount}
+              >
+                -
+              </button>
+              <div>{count} </div>
+              <button
+                className='text-orange font-semibold text-3xl'
+                onClick={addCount}
+              >
+                +
+              </button>
             </div>
-            <div className='flex bg-orange rounded-xl py-4 justify-center gap-4 text-white font-semibold lg:grow lg:ml-4'>
+            <button
+              className='flex bg-orange rounded-xl py-4 justify-center gap-4 text-white font-semibold lg:grow lg:ml-4'
+              onClick={Cart}
+            >
               <AiOutlineShoppingCart className='h-6 w-6' />
               <div className='font-semibold'>Add to cart</div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
