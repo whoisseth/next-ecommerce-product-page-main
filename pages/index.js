@@ -2,8 +2,29 @@
 import Head from "next/head";
 import Main from "../components/Main";
 import Navbar from "../components/Navbar";
+import { useState } from "react";
+import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
+  const price = 125;
+  const [count, setCount] = useState(0);
+  let [cart, setCart] = useState(0);
+  const [addCartbtn, setAddCartbtn] = useState(false);
+
+  function addCart() {
+    setAddCartbtn(true);
+  }
+  function addCount() {
+    setCount(count + 1);
+  }
+  function minusCount() {
+    if (count > 0) setCount(count - 1);
+  }
+  function Cart() {
+    cart = setCart(price * count);
+  }
+
+  console.log(cart);
   return (
     <>
       <Head>
@@ -15,8 +36,14 @@ export default function Home() {
           rel='stylesheet'
         />
       </Head>
-      <Navbar />
-      <Main />
+      <Navbar count={count} price={price} />
+      <Main
+        minusCount={minusCount}
+        addCount={addCount}
+        count={count}
+        Cart={Cart}
+        price={price}
+      />
     </>
   );
 }
