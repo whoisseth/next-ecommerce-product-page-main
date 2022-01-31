@@ -4,23 +4,25 @@ import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
 
-function Navbar({ count, price }) {
+function Navbar({ count, price, setCountZero, addCartbtn }) {
   const [showMe, setShowMe] = useState(true);
   const [cart, setCart] = useState(true);
 
   function toggleCart() {
     setCart(!cart);
   }
-  console.log(cart);
+  // console.log(cart);
   function toggle() {
     setShowMe(!showMe);
   }
+  const pageLinksHoverBorder = `relative hover:text-black  md:after:h-1 md:after:mt-4 md:after:bg-orange md:after:from-green-500 md:after:to-blue-400 hover:after:absolute after:left-0 md:after:top-12  ease-in-out after:duration-800  `;
+
   return (
     <>
-      <nav className=' flex justify-between px-8 md:px-24 items-center py-6 relative z-50'>
+      <nav className=' flex justify-between px-8 lg:px-24 items-center py-6 relative z-50'>
         <div className='left flex items-center gap-8'>
           <div className='flex items-center gap-4'>
-            <button className='md:hidden' onClick={toggle}>
+            <button className='lg:hidden' onClick={toggle}>
               <img src='/images/icon-menu.svg' alt='' />
             </button>
             <div className='logo'>
@@ -36,48 +38,55 @@ function Navbar({ count, price }) {
               <img src='/images/icon-close.svg' alt='' />
             </button>
             <Link href='/'>
-              <a href=''>Collections</a>
+              <a className={` ${pageLinksHoverBorder} after:w-[5rem]`} href=''>
+                Collections
+              </a>
             </Link>
             <Link href='/'>
-              <a href=''>Men</a>
+              <a className={` ${pageLinksHoverBorder} after:w-[2.5rem]`}>Men</a>
             </Link>
             <Link href='/'>
-              <a href=''>Women</a>
+              <a className={` ${pageLinksHoverBorder} after:w-[4rem]`}>Women</a>
             </Link>
             <Link href='/'>
-              <a href=''>About</a>
+              <a className={` ${pageLinksHoverBorder} after:w-[3rem]`}>About</a>
             </Link>
             <Link href='/'>
-              <a href=''>Contact</a>
+              <a className={` ${pageLinksHoverBorder} after:w-[4rem]`}>
+                Contact
+              </a>
             </Link>
           </div>
         </div>
         <div className='right flex items-center gap-4 lg:gap-8'>
-          <button>
+          <div>
             <AiOutlineShoppingCart
-              className='relative h-8 w-8'
+              className='relative h-8 w-8 cursor-pointer hover:opacity-70'
               onClick={toggleCart}
             />
-            <div
-              className={` ${
-                count > 0 ? "flex" : "hidden"
-              }  absolute bg-orange text-white rounded-full text-center text-sm px-2 top-4 right-[4.5rem]  `}
-            >
-              {count}
-            </div>
+            {addCartbtn ? (
+              <div
+                className={` ${
+                  count > 0 ? "flex" : "hidden"
+                }  absolute bg-orange text-white rounded-full text-center text-sm px-2 top-4 right-[4.5rem] lg:right-[10rem] lg:top-[2rem]  `}
+              >
+                {count}
+              </div>
+            ) : (
+              ""
+            )}
             <div
               className={` ${
                 cart ? "hidden" : "flex"
-              }    absolute  bg-white rounded-lg top-[6rem] overflow-hidden p-4  flex-col gap-4 shadow-md shadow-gray-200    lg:w-[22rem] lg:right-[2rem] 
-             `}
+              } absolute  bg-white rounded-lg top-[6rem] overflow-hidden p-4  flex-col gap-4 shadow-md shadow-gray-200  lg:w-[22rem] 
+              inset-x-0 mx-6 lg:mx-0
+              lg:left-auto
+              lg:right-[4rem] 
+              `}
             >
-              {/* <div
-              className='absolute  bg-white rounded-lg top-[6rem] overflow-hidden p-4 flex flex-col gap-4 shadow-md shadow-gray-200   sm:inset-x-0 mx-4 lg:w-[24rem] lg:right-[8rem] md:bg-blue-200
-             '
-            > */}
               <p className=' font-semibold text-left'>Cart</p>
-              <hr className='w-full' />
-              {count > 0 ? (
+              <hr className='w-full ' />
+              {count > 0 && addCartbtn ? (
                 <div className='2 flex items-center gap-4 justify-between w-full '>
                   <img
                     className='h-12 w-12 rounded-lg
@@ -94,24 +103,26 @@ function Navbar({ count, price }) {
                       </span>
                     </p>
                   </div>
-                  <FaTrashAlt className='ml-4 text-gray-300' />
+                  <FaTrashAlt
+                    className='ml-4 text-gray-300 cursor-pointer hover:opacity-60'
+                    onClick={setCountZero}
+                  />
                 </div>
               ) : (
                 <div className='text-gray-400 text-semibold text-sm'>
-                  {" "}
                   You cart is empty
                 </div>
               )}
 
               <button
                 className='3 bg-orange rounded-lg px-full
-              text-white w-full py-2'
+              text-white w-full py-2 hover:opacity-60'
               >
                 Checkout
               </button>
             </div>
-          </button>
-          <div className='h-8 w-8 lg:h-10 lg:w-10 bg-blue-100 rounded-full'>
+          </div>
+          <div className='h-8 w-8 lg:h-10 lg:w-10 bg-blue-100 rounded-full hover:ring-2 ring-orange cursor-pointer'>
             <img
               className='h-full w-full'
               src='/images/image-avatar.png'

@@ -7,9 +7,9 @@ import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
   const price = 125;
-  const [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
   let [cart, setCart] = useState(0);
-  const [addCartbtn, setAddCartbtn] = useState(false);
+  let [addCartbtn, setAddCartbtn] = useState(false);
 
   function addCart() {
     setAddCartbtn(true);
@@ -19,10 +19,26 @@ export default function Home() {
   }
   function minusCount() {
     if (count > 0) setCount(count - 1);
+    if (count === 0) {
+      setAddCartbtn(false);
+    }
   }
   function Cart() {
     cart = setCart(price * count);
   }
+  function addCartbtnFun() {
+    // if (count > 0) {
+    addCartbtn = setAddCartbtn(true);
+    // } else console.log("nothing is added in cart");
+  }
+  function setCountZero() {
+    count = setCount(0);
+    addCartbtn = setAddCartbtn(false);
+  }
+  console.log(addCartbtn);
+  // if (count === 0) {
+  //   addCartbtn = setAddCartbtn(false);
+  // }
 
   console.log(cart);
   return (
@@ -36,13 +52,19 @@ export default function Home() {
           rel='stylesheet'
         />
       </Head>
-      <Navbar count={count} price={price} />
+      <Navbar
+        count={count}
+        price={price}
+        setCountZero={setCountZero}
+        addCartbtn={addCartbtn}
+      />
       <Main
         minusCount={minusCount}
         addCount={addCount}
         count={count}
         Cart={Cart}
         price={price}
+        addCartbtnFun={addCartbtnFun}
       />
     </>
   );

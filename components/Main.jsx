@@ -23,7 +23,7 @@ const desktopImages = [
   { url: "/images/image-product-4-thumbnail.jpg" },
 ];
 
-function Main({ addCount, minusCount, count, Cart, price }) {
+function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
   const slideRef = useRef();
   const goto = ({ target }) => {
     slideRef.current.goTo(parseInt(target.value, 10));
@@ -95,25 +95,25 @@ function Main({ addCount, minusCount, count, Cart, price }) {
           <div className='flex flex-col gap-4 lg:gap-0 lg:flex-row lg:gap    '>
             <div className='font-semibold  flex justify-between space bg-light-grayish-blue rounded-xl py-2 px-4 items-center lg:w-32  '>
               <button
-                className='text-orange font-semibold text-3xl'
+                className='text-orange font-semibold text-3xl hover:opacity-70'
                 onClick={minusCount}
               >
                 -
               </button>
               <div>{count} </div>
               <button
-                className='text-orange font-semibold text-3xl'
+                className='text-orange font-semibold text-3xl hover:opacity-70'
                 onClick={addCount}
               >
                 +
               </button>
             </div>
             <button
-              className='flex bg-orange rounded-xl py-4 justify-center gap-4 text-white font-semibold lg:grow lg:ml-4'
-              onClick={Cart}
+              className='flex bg-orange rounded-xl py-4 justify-center gap-4 text-white font-semibold lg:grow lg:ml-4 hover:opacity-70 '
+              onClick={count > 0 ? addCartbtnFun : console.log("count is zero")}
             >
               <AiOutlineShoppingCart className='h-6 w-6' />
-              <div className='font-semibold'>Add to cart</div>
+              <div className='font-semibold '>Add to cart</div>
             </button>
           </div>
         </div>
