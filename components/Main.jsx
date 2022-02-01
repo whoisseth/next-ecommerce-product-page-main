@@ -78,8 +78,8 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
           </div>
           <div className=' text-gray-400 lg:text-sm'>
             These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
+            Featuring a durable rubber outer sole, they&#8217;ll withstand
+            everything the weather can offer.
           </div>
           <div className='flex items-center justify-between lg:flex-col lg:items-start'>
             <div className='flex items-center gap-4'>
