@@ -15,7 +15,7 @@ function Navbar({ count, price, setCountZero, addCartbtn }) {
   function toggle() {
     setShowMe(!showMe);
   }
-  const pageLinksHoverBorder = `relative hover:text-black  md:after:h-1 md:after:mt-4 md:after:bg-orange md:after:from-green-500 md:after:to-blue-400 hover:after:absolute after:left-0 md:after:top-12  ease-in-out after:duration-800  `;
+  const pageLinksHoverBorder = `relative hover:text-black  md:after:h-1 md:after:mt-4 md:after:bg-orange md:after:from-green-500 md:after:to-blue-400 lg:hover:after:absolute after:left-0 md:after:top-12  ease-in-out after:duration-800  `;
 
   return (
     <>
