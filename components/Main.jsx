@@ -162,68 +162,70 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
   function ImagePreviewSlider() {
     return (
       <>
-        <div
-          className={` hidden lg:${
-            imgPreiw ? "hidden" : "block"
-          } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
-        ></div>
-        <div
-          className={` hidden lg:${
-            imgPreiw ? "hidden" : "flex"
-          } absolute left  flex-col gap-6 h-screen w-screen  justify-center items-center top-0 right-0  z-50 overscroll-none `}
-        >
-          <div className=' '>
-            <div className='flex  relative    items-center    w-full h-auto lg:w-[26rem]   '>
-              <img
-                className='h-full w-full lg:rounded-xl '
-                src={selectedImg}
-                alt=''
-              />
-              <button
-                className='absolute right-0 -top-10'
-                onClick={() => setImgPeview(true)}
-              >
-                <IoMdClose className='text-white text-3xl hover:text-orange' />
-              </button>
-              <button
-                className=' absolute -left-4 text-2xl overflow-auto bg-white  p-1  rounded-full    '
-                onClick={preImg}
-              >
-                <MdNavigateBefore className='font-bold h-8 w-8  hover:text-orange ' />
-              </button>
-              <button
-                className=' absolute -right-4  text-2xl overflow-auto bg-white  p-1  rounded-full'
-                onClick={nextImg}
-              >
-                <MdNavigateNext className=' font-bold h-8 w-8  hover:text-orange' />
-              </button>
-            </div>
-          </div>
-
+        <div>
           <div
-            className='hidden lg:flex
-            ImgSlider gap-4 justify-center  w-[26rem]'
+            className={` hidden lg:${
+              imgPreiw ? "hidden" : "block"
+            } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
+          ></div>
+          <div
+            className={` hidden lg:${
+              imgPreiw ? "hidden" : "flex"
+            } absolute left  flex-col gap-6 h-screen w-screen  justify-center items-center top-0 right-0  z-50 overscroll-none `}
           >
-            {images.map((images, index) => (
-              <div key={index}>
+            <div className=' '>
+              <div className='flex  relative    items-center    w-full h-auto lg:w-[26rem]   '>
+                <img
+                  className='h-full w-full lg:rounded-xl '
+                  src={selectedImg}
+                  alt=''
+                />
                 <button
-                  className={`relative h-22 w-22 overflow-hidden rounded-xl active:ring-2 
+                  className='absolute right-0 -top-10'
+                  onClick={() => setImgPeview(true)}
+                >
+                  <IoMdClose className='text-white text-3xl hover:text-orange' />
+                </button>
+                <button
+                  className=' absolute -left-4 text-2xl overflow-auto bg-white  p-1  rounded-full    '
+                  onClick={preImg}
+                >
+                  <MdNavigateBefore className='font-bold h-8 w-8  hover:text-orange ' />
+                </button>
+                <button
+                  className=' absolute -right-4  text-2xl overflow-auto bg-white  p-1  rounded-full'
+                  onClick={nextImg}
+                >
+                  <MdNavigateNext className=' font-bold h-8 w-8  hover:text-orange' />
+                </button>
+              </div>
+            </div>
+
+            <div
+              className='hidden lg:flex
+            ImgSlider gap-4 justify-center  w-[26rem]'
+            >
+              {images.map((images, index) => (
+                <div key={index}>
+                  <button
+                    className={`relative h-22 w-22 overflow-hidden rounded-xl active:ring-2 
                    ${
                      selectedImg === images
                        ? "ring-2 ring-orange transition delay-75 ease-linear "
                        : ""
                    } focus:ring-orange`}
-                  onClick={() => setSelectedImg(images)}
-                >
-                  <div
-                    className={`absolute h-full w-full hover:bg-white opacity-50  ${
-                      selectedImg === images ? " opacity-50 bg-white" : ""
-                    }`}
-                  ></div>
-                  <img className={`h-full w-full `} src={images} alt='' />
-                </button>
-              </div>
-            ))}
+                    onClick={() => setSelectedImg(images)}
+                  >
+                    <div
+                      className={`absolute h-full w-full hover:bg-white opacity-50  ${
+                        selectedImg === images ? " opacity-50 bg-white" : ""
+                      }`}
+                    ></div>
+                    <img className={`h-full w-full `} src={images} alt='' />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </>
