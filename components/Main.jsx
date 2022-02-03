@@ -43,14 +43,14 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
   console.log(images[countImg]);
   return (
     <>
-      <div className='h-[60vh]'>
+      <div className='h-[60vh]  '>
         <div
           className={` hidden lg:${
             imgPreiw ? "hidden" : "flex"
           } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
         />
         <ImagePreviewSlider />
-        <div className='lg:m-24 lg:mt-12   grid grid-cols-1 lg:grid-cols-2 items-center relative  '>
+        <div className='lg:mx-auto lg:mt-12   grid grid-cols-1 lg:grid-cols-2 items-center relative  lg:w-[56.25rem] '>
           <ImageSlider />
           <div className='right p-6 flex gap-4 flex-col mb-16 lg:w-[27rem]'>
             <div className='text-xs text-orange font-bold'>SNEAKER COMPANY</div>

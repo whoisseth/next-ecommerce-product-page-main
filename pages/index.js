@@ -52,20 +52,22 @@ export default function Home() {
           rel='stylesheet'
         />
       </Head>
-      <Navbar
-        count={count}
-        price={price}
-        setCountZero={setCountZero}
-        addCartbtn={addCartbtn}
-      />
-      <Main
-        minusCount={minusCount}
-        addCount={addCount}
-        count={count}
-        Cart={Cart}
-        price={price}
-        addCartbtnFun={addCartbtnFun}
-      />
+      <div className=''>
+        <Navbar
+          count={count}
+          price={price}
+          setCountZero={setCountZero}
+          addCartbtn={addCartbtn}
+        />
+        <Main
+          minusCount={minusCount}
+          addCount={addCount}
+          count={count}
+          Cart={Cart}
+          price={price}
+          addCartbtnFun={addCartbtnFun}
+        />
+      </div>
     </>
   );
 }
