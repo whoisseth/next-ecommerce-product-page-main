@@ -46,7 +46,7 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
       <div className='h-[60vh]'>
         <div
           className={` hidden lg:${
-            imgPreiw ? "hidden" : "block"
+            imgPreiw ? "hidden" : "flex"
           } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
         />
         <ImagePreviewSlider />
