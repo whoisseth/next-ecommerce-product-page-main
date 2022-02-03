@@ -36,7 +36,7 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
       countImg = setCountImg(countImg - 1);
     }
   }
-  const [imgPreiw, setImgPeview] = useState(false);
+  const [imgPreiw, setImgPeview] = useState(true);
 
   console.log(selectedImg);
   console.log(countImg);
