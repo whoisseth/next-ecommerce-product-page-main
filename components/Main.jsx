@@ -44,6 +44,11 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
   return (
     <>
       <div className='h-[60vh]'>
+        <div
+          className={` hidden lg:${
+            imgPreiw ? "hidden" : "block"
+          } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
+        />
         <ImagePreviewSlider />
         <div className='lg:m-24 lg:mt-12   grid grid-cols-1 lg:grid-cols-2 items-center relative  '>
           <ImageSlider />
@@ -163,11 +168,6 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
     return (
       <>
         <div>
-          <div
-            className={` hidden lg:${
-              imgPreiw ? "hidden" : "block"
-            } absolute top-0 right-0 h-full w-full bg-black opacity-80 z-50`}
-          ></div>
           <div
             className={` hidden lg:${
               imgPreiw ? "hidden" : "flex"
