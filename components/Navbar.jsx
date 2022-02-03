@@ -15,26 +15,36 @@ function Navbar({ count, price, setCountZero, addCartbtn }) {
   function toggle() {
     setShowMe(!showMe);
   }
-  const pageLinksHoverBorder = `relative hover:text-black  md:after:h-1 md:after:mt-4 md:after:bg-orange md:after:from-green-500 md:after:to-blue-400 lg:hover:after:absolute after:left-0 md:after:top-12  ease-in-out after:duration-800  `;
+  const pageLinksHoverBorder = `relative hover:text-black  md:after:h-1 md:after:mt-4 md:after:bg-orange md:after:from-green-500 md:after:to-blue-400 lg:hover:after:absolute after:left-0 md:after:top-9  ease-in-out after:duration-800  `;
 
   return (
     <>
-      <nav className=' flex justify-between px-8 lg:px-24 items-center py-6 relative z-50'>
+      <div
+        className={` ${
+          showMe ? "hidden" : "flex"
+        }  absolute h-full w-screen bg-black top-0 right-0 z-30 opacity-80`}
+      ></div>
+      <nav className=' flex justify-between px-8 lg:px-24  items-center py-6 lg:py-3 relative  '>
         <div className='left flex items-center gap-8'>
           <div className='flex items-center gap-4'>
             <button className='lg:hidden' onClick={toggle}>
               <img src='/images/icon-menu.svg' alt='' />
             </button>
-            <div className='logo'>
-              <img src='/images/logo.svg' alt='' />
-            </div>
+            <Link href={"/"}>
+              <a>
+                <div className='logo'>
+                  <img src='/images/logo.svg' alt='' />
+                </div>
+              </a>
+            </Link>
           </div>
+
           <div
             className={` ${
               showMe ? "hidden" : "flex"
-            }  text-black font-bold bg-white flex-col absolute left-0 top-0  h-screen p-8 w-56 lg:static lg:flex lg:h-0 lg:auto lg:font-normal lg:flex-row  lg:bg-none lg:items-center  lg:text-gray-400  gap-8 `}
+            }  text-black font-bold bg-white lg:bg-transparent flex-col absolute left-0 top-0  h-screen p-8 w-56 lg:static lg:flex lg:h-0 lg:auto lg:font-normal lg:flex-row  lg:bg-none lg:items-center  lg:text-gray-400  gap-8  z-50  `}
           >
-            <button className=' lg:hidden mt-3 mb-8' onClick={toggle}>
+            <button className=' lg:hidden mt-0 mb-8' onClick={toggle}>
               <img src='/images/icon-close.svg' alt='' />
             </button>
             <Link href='/'>
@@ -58,17 +68,18 @@ function Navbar({ count, price, setCountZero, addCartbtn }) {
             </Link>
           </div>
         </div>
-        <div className='right flex items-center gap-4 lg:gap-8'>
+        <div className='right flex items-center gap-4 lg:gap-8 '>
           <div>
             <AiOutlineShoppingCart
-              className='relative h-8 w-8 cursor-pointer hover:opacity-70'
+              className='relative h-6 w-6 lg:h-8 lg:w-8 cursor-pointer hover:opacity-70  '
               onClick={toggleCart}
             />
             {addCartbtn ? (
               <div
+                onClick={toggleCart}
                 className={` ${
                   count > 0 ? "flex" : "hidden"
-                }  absolute bg-orange text-white rounded-full text-center text-sm px-2 top-4 right-[4.5rem] lg:right-[10rem] lg:top-[2rem]  `}
+                }  absolute bg-orange text-white rounded-full text-center text-xs lg:text-sm px-1  lg:px-2 top-6 lg right-[4.5rem] lg:right-[10rem] lg:top-[1.5rem] cursor-pointer - `}
               >
                 {count}
               </div>
@@ -82,7 +93,7 @@ function Navbar({ count, price, setCountZero, addCartbtn }) {
               inset-x-0 mx-6 lg:mx-0
               lg:left-auto
               lg:right-[4rem] 
-              `}
+              z-40 `}
             >
               <p className=' font-semibold text-left'>Cart</p>
               <hr className='w-full ' />
@@ -124,14 +135,14 @@ function Navbar({ count, price, setCountZero, addCartbtn }) {
           </div>
           <div className='h-8 w-8 lg:h-10 lg:w-10 bg-blue-100 rounded-full hover:ring-2 ring-orange cursor-pointer'>
             <img
-              className='h-full w-full'
+              className='h-full w-full '
               src='/images/image-avatar.png'
               alt=''
             />
           </div>
         </div>
       </nav>
-      <hr />
+      <hr className=' lg:mx-24 ' />
     </>
   );
 }
