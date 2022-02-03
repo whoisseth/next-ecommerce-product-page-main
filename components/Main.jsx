@@ -112,7 +112,7 @@ function Main({ addCount, minusCount, count, Cart, price, addCartbtnFun }) {
       <>
         <div className='left flex flex-col gap-8'>
           <div className='lg: '>
-            <div className='flex  relative   bg-red-400 items-center  lg:rounded-xl   w-full h-auto lg:w-[24rem]   '>
+            <div className='flex  relative    items-center  lg:rounded-xl overflow-hidden   w-full h-auto lg:w-[24rem]   '>
               <img
                 className='h-full w-full lg:rounded-xl cursor-pointer '
                 src={selectedImg}
